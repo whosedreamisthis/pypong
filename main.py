@@ -1,7 +1,8 @@
-import pygame
+import pygame,random
 from consts import *
 from score_manager import ScoreManager
 from paddle import Paddle
+
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Pong")
@@ -24,6 +25,14 @@ def draw_line(screen):
         current_y += segment_length + gap_length
     # pygame.draw.rect(screen,BLACK, (SCREEN_WIDTH//2,0,32,SCREEN_HEIGHT))
 
+def move_enemy():
+    pass
+    # do_it = random.choice([0,1,2])
+    # if do_it == 0:
+    #     enemy.move_down()
+    # else:
+    #     enemy.move_up()
+
 
 while running:
     for event in pygame.event.get():
@@ -35,6 +44,8 @@ while running:
         player.move_up()
     elif keys[pygame.K_DOWN]:
         player.move_down()
+    
+    move_enemy()
     screen.fill(BLACK)
     draw_line(screen)
     score_manager.draw(screen)
