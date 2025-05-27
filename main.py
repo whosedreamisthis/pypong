@@ -29,12 +29,12 @@ def draw_line(screen):
     # pygame.draw.rect(screen,BLACK, (SCREEN_WIDTH//2,0,32,SCREEN_HEIGHT))
 
 def move_enemy():
-    pass
-    # do_it = random.choice([0,1,2])
-    # if do_it == 0:
-    #     enemy.move_down()
-    # else:
-    #     enemy.move_up()
+    if ball.dx < 0:
+        if ball.y > enemy.y:
+            enemy.move_down()
+        elif ball.y < enemy.y:
+            enemy.move_up()
+    
 
 def check_out_of_bounds():
     global paused
@@ -70,10 +70,8 @@ while running:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP]:
             player.move_up()
-            enemy.move_up()
         elif keys[pygame.K_DOWN]:
             player.move_down()
-            enemy.move_down()
         
         ball.update()
         check_out_of_bounds()
