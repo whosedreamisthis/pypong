@@ -34,6 +34,13 @@ def move_enemy():
     # else:
     #     enemy.move_up()
 
+def check_out_of_bounds():
+    if ball.x < -ball.radius:
+        score_manager.increase_player_score()
+        ball.reset()
+    elif ball.x > SCREEN_WIDTH:
+        score_manager.increase_enemy_score()
+        ball.reset()
 
 while running:
     for event in pygame.event.get():
@@ -47,6 +54,7 @@ while running:
         player.move_down()
     
     ball.update()
+    check_out_of_bounds()
     move_enemy()
     screen.fill(BLACK)
     draw_line(screen)

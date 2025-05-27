@@ -15,7 +15,7 @@ class ScoreManager:
         self.player_score += 1
         
     def increase_enemy_score(self):
-        self.player_score += 1
+        self.enemy_score += 1
         
     def draw(self, screen):
         player_text_surface = font.render(f"{self.player_score}", True,OFFWHITE ) # Text, Antialias, Color
