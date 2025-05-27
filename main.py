@@ -29,6 +29,12 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+            
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_UP]:
+        player.move_up()
+    elif keys[pygame.K_DOWN]:
+        player.move_down()
     screen.fill(BLACK)
     draw_line(screen)
     score_manager.draw(screen)
