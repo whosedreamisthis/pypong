@@ -2,7 +2,7 @@ import pygame,random
 from consts import *
 from score_manager import ScoreManager
 from paddle import Paddle
-
+from ball import Ball
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Pong")
@@ -12,6 +12,7 @@ running = True
 score_manager = ScoreManager()
 player = Paddle (SCREEN_WIDTH - 30,SCREEN_HEIGHT//2)
 enemy = Paddle (30,SCREEN_HEIGHT//2)
+ball = Ball()
 def draw_line(screen):
     segment_length = 30
     gap_length = 20
@@ -45,12 +46,14 @@ while running:
     elif keys[pygame.K_DOWN]:
         player.move_down()
     
+    ball.update()
     move_enemy()
     screen.fill(BLACK)
     draw_line(screen)
     score_manager.draw(screen)
     player.draw(screen)
     enemy.draw(screen)
+    ball.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
     
