@@ -1,6 +1,7 @@
 import pygame
 from consts import *
 from score_manager import ScoreManager
+from paddle import Paddle
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Pong")
@@ -8,6 +9,8 @@ clock = pygame.time.Clock()
 FPS = 60
 running = True
 score_manager = ScoreManager()
+player = Paddle (SCREEN_WIDTH - 30,SCREEN_HEIGHT//2)
+enemy = Paddle (30,SCREEN_HEIGHT//2)
 def draw_line(screen):
     segment_length = 30
     gap_length = 20
@@ -29,6 +32,8 @@ while running:
     screen.fill(BLACK)
     draw_line(screen)
     score_manager.draw(screen)
+    player.draw(screen)
+    enemy.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
     
